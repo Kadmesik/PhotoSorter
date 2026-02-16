@@ -1,0 +1,220 @@
+﻿<Window x:Class="PhotoSorter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Photo Sorter" Height="700" Width="1000"
+        Background="#1E1E1E"
+        WindowState="Maximized"
+        KeyDown="Window_KeyDown" Focusable="True">
+
+    <Window.Resources>
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="InputBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderBrush" Value="#555"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+
+        <Style x:Key="LabelText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#AAA"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+
+        <Style x:Key="SortTile" TargetType="Border">
+            <Setter Property="Background" Value="#252526"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+        <Style x:Key="FolderBoxStyle" TargetType="Border">
+            <Setter Property="Background" Value="#252526"/>
+            <Setter Property="BorderBrush" Value="#007ACC"/>
+            <Setter Property="BorderThickness" Value="0,3,0,0"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style x:Key="FolderNameStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+
+        <Style x:Key="KeyHintStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#808080"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+    </Window.Resources>
+        <Grid>
+            <Grid x:Name="MenuView" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600">
+            <StackPanel>
+                <TextBlock Text="KONFIGURACJA SORTOWANIA" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                <TextBlock Text="Krok 1: Wybierz folder ze zdjęciami" Foreground="#007ACC" FontWeight="Bold" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="PathDisplay" Grid.Column="0" IsReadOnly="True" Background="#2D2D30" Foreground="Gray" Padding="10" Text="Nie wybrano folderu..."/>
+                    <Button Grid.Column="1" Content="..." Width="50" Click="BtnSelectFolder_Click" Background="#444" Foreground="White"/>
+                </Grid>
+
+                <TextBlock Text="Krok 2: Nazwij foldery docelowe (Klawisze 1-8)" Foreground="#007ACC" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <UniformGrid Columns="2" Rows="4" Margin="0,0,0,20">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [1]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox1" Text="Folder1" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [2]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox2" Text="Folder2" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [3]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox3" Text="Folder3" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [4]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox4" Text="Folder4" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [5]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox5" Text="Folder5" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [6]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox6" Text="Folder6" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [7]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox7" Text="Folder7" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Klawisz [8]" Style="{StaticResource LabelText}"/>
+                        <TextBox x:Name="ConfigBox8" Text="Folder8" Style="{StaticResource InputBox}"/>
+                    </StackPanel>
+                </UniformGrid>
+
+                <Button Content="ROZPOCZNIJ SORTOWANIE" Style="{StaticResource ModernButton}" Click="BtnStart_Click" Height="50" Margin="0,20,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="SortingView" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <Image x:Name="MainImage" Grid.Row="0" Margin="20" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+
+            <TextBlock x:Name="FileNameText" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Gray" Margin="25,10,0,0"/>
+
+            <UniformGrid Grid.Row="1" Rows="1" Background="#1E1E1E" Margin="10">
+
+                <Border x:Name="Border1" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl1" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(1)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border2" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl2" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(2)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border3" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl3" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(3)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border4" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl4" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(4)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border5" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl5" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(5)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border6" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl6" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(6)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border7" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl7" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(7)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border8" Style="{StaticResource FolderBoxStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="Lbl8" Style="{StaticResource FolderNameStyle}"/>
+                        <TextBlock Text="(8)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border9" Style="{StaticResource FolderBoxStyle}" BorderBrush="#FFCC00">
+                    <StackPanel>
+                        <TextBlock Text="Pomiń" Style="{StaticResource FolderNameStyle}" Foreground="#FFCC00"/>
+                        <TextBlock Text="(9)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="Border0" Style="{StaticResource FolderBoxStyle}" BorderBrush="#D13438">
+                    <StackPanel>
+                        <TextBlock Text="Usuń" Style="{StaticResource FolderNameStyle}" Foreground="#D13438"/>
+                        <TextBlock Text="(0)" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="BorderB" Style="{StaticResource FolderBoxStyle}" BorderBrush="#C0C0C0">
+                    <StackPanel>
+                        <TextBlock Text="Cofnij" Style="{StaticResource FolderNameStyle}" Foreground="#C0C0C0"/>
+                        <TextBlock Text="Ctrl+z" Style="{StaticResource KeyHintStyle}"/>
+                    </StackPanel>
+                </Border>
+
+            </UniformGrid>
+        </Grid>
+    </Grid>
+</Window>
