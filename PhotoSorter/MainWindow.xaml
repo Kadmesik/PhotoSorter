@@ -68,6 +68,33 @@
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Margin" Value="0,5,0,0"/>
         </Style>
+        <Style x:Key="ClearButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FF8C8C8C"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
         <Grid>
             <Grid x:Name="MenuView" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600">
@@ -89,36 +116,60 @@
                 <UniformGrid Columns="2" Rows="4" Margin="0,0,0,20">
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [1]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox1" Text="Folder1" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox1" Text="Folder1" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="1" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [2]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox2" Text="Folder2" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox2" Text="Folder2" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="2" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [3]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox3" Text="Folder3" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox3" Text="Folder3" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="3" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [4]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox4" Text="Folder4" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox4" Text="Folder4" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="4" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
 
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [5]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox5" Text="Folder5" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox5" Text="Folder5" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="5" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [6]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox6" Text="Folder6" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox6" Text="Folder6" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="6" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [7]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox7" Text="Folder7" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox7" Text="Folder7" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="7" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                     <StackPanel Margin="5">
                         <TextBlock Text="Klawisz [8]" Style="{StaticResource LabelText}"/>
-                        <TextBox x:Name="ConfigBox8" Text="Folder8" Style="{StaticResource InputBox}"/>
+                        <Grid>
+                            <TextBox x:Name="ConfigBox8" Text="Folder8" Style="{StaticResource InputBox}" Padding="5,5,25,5"/>
+                            <Button Content="X" Style="{StaticResource ClearButton}" Tag="8" Click="BtnClear_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        </Grid>
                     </StackPanel>
                 </UniformGrid>
 
@@ -132,9 +183,20 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="MainImage" Grid.Row="0" Margin="20" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Grid Grid.Row="0" Margin="20">
+                <Image x:Name="MainImage" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" Visibility="Collapsed"/>
 
-            <TextBlock x:Name="FileNameText" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Gray" Margin="25,10,0,0"/>
+                <MediaElement x:Name="MainVideo" Stretch="Uniform" 
+                  LoadedBehavior="Manual" UnloadedBehavior="Stop" 
+                  Visibility="Collapsed" 
+                  MediaEnded="MainVideo_MediaEnded" 
+                  MediaOpened="MainVideo_MediaOpened"
+                  ScrubbingEnabled="True"/>
+            </Grid>
+
+
+            <TextBlock x:Name="FileNameText" Foreground="Gray" FontSize="16"/>
+
 
             <UniformGrid Grid.Row="1" Rows="1" Background="#1E1E1E" Margin="10">
 
